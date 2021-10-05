@@ -1,58 +1,37 @@
-//import java.util.List;
-//
-//public class Main {
-//
-//    public static void main(String[] args) {
-//
-//        IPage page = new ArticlePage();
-//        System.out.println(page.openPage());
-//        System.out.println(page.title("prueba"));
-//        System.out.println(page.openBody());
-//        System.out.println(page.navBar("nada", "articulos", List.of("articulos","about")));
-//        System.out.println(page.closeBody());
-//        System.out.println(page.closePage());
-//
-//    }
-//}
-
-import java.lang.reflect.Method;
+import codigo.GeneradorCodigo;
+import web.GeneradorWeb;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.Scanner;
 
-class Exercise {
+public class Main {
 
-    public static void main( String args[] ) {
-        Printer myPrinter = new Printer();
+    public static void main(String[] args) throws IOException {
 
-        Integer[] intArray = { 1, 2, 3 };
-        String[] stringArray = {"Hello", "World"};
+        Scanner input = new Scanner(System.in);
 
-        myPrinter.print(intArray);
-        myPrinter.print(stringArray);
+        /* inputs del usuario */
+        System.out.println("Nombre de la pagina: ");
+        String nombre_pagina = input.nextLine();
+        System.out.println("URL del Logo de la pagina: ");
+        String url_logo = input.nextLine();
+        System.out.println("Cantidad de secciones: ");
+        int cantidadSecciones = Integer.parseInt(input.nextLine());
+        List<String> secciones = new ArrayList<>();
 
-        int count = 0;
-        for (Method method : Printer.class.getDeclaredMethods()) {
-            String name = method.getName();
-
-            if(name.equals("print"))
-                count++;
+        while (cantidadSecciones > 0){
+            System.out.println("Escriba el nombre de una seccion y pulse enter");
+            String seccion = input.nextLine().toLowerCase();
+            secciones.add(seccion);
+            cantidadSecciones -= 1;
         }
 
-        if(count > 1) System.out.println("Method overloading is not allowed!");
-
-    }
-}
-
-class Printer
-{
-
-    public <T> void print(T[] values) {
-        for (int i = 0; i < values.length; i++) {
-            System.out.println(values[i]);
-        }
-
+        /* genera el codigo y la web */
+        GeneradorCodigo generadorCodigo = new GeneradorCodigo(secciones,nombre_pagina,url_logo);
+        GeneradorWeb generadorWeb = new GeneradorWeb(generadorCodigo, secciones);
+        generadorWeb.generarWeb();
+        System.out.println("FIN");
     }
 
 }
