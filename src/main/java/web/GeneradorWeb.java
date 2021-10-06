@@ -14,6 +14,10 @@ public class GeneradorWeb {
         this.secciones = secciones;
     }
 
+
+    /**
+     * Crea el archivo index junto con los archivos elegidos por el usuario.
+     * **/
     public void generarWeb(){
         this.completarArchivo("index");
         for (String seccion : secciones){
@@ -21,11 +25,12 @@ public class GeneradorWeb {
         }
     }
 
+    /**
+     * recibe el nombre de un archivo y lo crea con el codigo dentro.
+     * **/
     public void completarArchivo(String nombreArchivo){
-        ArchivoHTML archivoHTML;
-        Pagina pagina;
-        archivoHTML = new ArchivoHTML(nombreArchivo);
-        pagina = new Pagina(generadorCodigo.generarCodigo(), archivoHTML);
+        ArchivoHTML archivoHTML = new ArchivoHTML(nombreArchivo);
+        Pagina pagina = new Pagina(generadorCodigo.generarCodigo(), archivoHTML);
         pagina.escribirCodigoEnArchivo();
     }
 

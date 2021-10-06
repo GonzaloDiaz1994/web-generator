@@ -15,6 +15,10 @@ public class Pagina {
         this.archivo = archivo;
     }
 
+
+    /**
+     * Escribe el codigo en el archivo.
+     * **/
     public void escribirCodigoEnArchivo() {
         try{
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(this.archivo.generarArchivo()));

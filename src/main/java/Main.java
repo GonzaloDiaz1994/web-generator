@@ -31,7 +31,7 @@ public class Main {
         GeneradorCodigo generadorCodigo = new GeneradorCodigo(secciones,nombre_pagina,url_logo);
         GeneradorWeb generadorWeb = new GeneradorWeb(generadorCodigo, secciones);
         generadorWeb.generarWeb();
-        System.out.println("FIN");
+        System.out.println("Archivos creados con exito");
     }
 
 }

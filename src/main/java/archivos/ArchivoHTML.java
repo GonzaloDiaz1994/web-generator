@@ -7,6 +7,8 @@ public class ArchivoHTML extends Archivo {
         super(nombreArchivo);
     }
 
+    /**
+     * Genera un archivo y lo retorna.**/
     @Override
     public String generarArchivo() {
         String nombre = this.nombreArchivo + ".html";

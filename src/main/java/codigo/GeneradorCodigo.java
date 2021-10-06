@@ -14,6 +14,9 @@ public class GeneradorCodigo implements IEstructura, INav{
         this.logo = logo;
     }
 
+    /**
+     * Genera el codigo que va a tener todas las paginas de la web.
+     * **/
     public String generarCodigo(){
         return this.openPage() +
                 this.title(this.nombrePagina) +
